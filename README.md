@@ -162,3 +162,8 @@ Get-Content db/script.sql | docker exec -i mysql-container mysql -uroot -psenha_
 | -i      |   Modo interativo, esperar resposta    |
 | --name  | Nome do container                      |
 | -p      | Senha do mysql do dockerfile           |
+
+
+# extras
+Realizar build, mostrar o progresso e sem cache
+docker compose build --progress=plain --no-cache
