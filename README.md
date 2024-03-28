@@ -167,3 +167,12 @@ Get-Content db/script.sql | docker exec -i mysql-container mysql -uroot -psenha_
 # extras
 Realizar build, mostrar o progresso e sem cache
 docker compose build --progress=plain --no-cache
+
+docker compose -f docker-compose.yml build
+docker compose -f docker-compose.yml up
+docker compose -f docker-compose.yml down
+
+docker compose exec container-name /bin/sh
+docker exec -it container-name bash
+docker exec -it container-name /bin/sh
+docker logs container-name
