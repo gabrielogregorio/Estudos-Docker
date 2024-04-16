@@ -171,8 +171,11 @@ docker compose build --progress=plain --no-cache
 docker compose -f docker-compose.yml build
 docker compose -f docker-compose.yml up
 docker compose -f docker-compose.yml down
+docker compose ps
+
 
 docker compose exec container-name /bin/sh
+docker compose exec container-name /bin/bash
 docker exec -it container-name bash
 docker exec -it container-name /bin/sh
 docker logs container-name
