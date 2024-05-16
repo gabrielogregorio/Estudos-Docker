@@ -179,3 +179,11 @@ docker compose exec container-name /bin/bash
 docker exec -it container-name bash
 docker exec -it container-name /bin/sh
 docker logs container-name
+
+
+===========
+
+
+Install docker https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04
+
+Install make https://linuxgenie.net/install-use-make-ubuntu-22-04/
