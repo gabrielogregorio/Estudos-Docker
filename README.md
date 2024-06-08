@@ -187,3 +187,11 @@ docker logs container-name
 Install docker https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04
 
 Install make https://linuxgenie.net/install-use-make-ubuntu-22-04/
+
+===
+
+# to run docker without sudo in ubuntu 22
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+
