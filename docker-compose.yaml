@@ -4,7 +4,10 @@ services:
       context: .
       dockerfile: Dockerfile.yaml
     container_name: app2
-
+    volumes:
+      - type: bind 
+        source: ./site
+        target: /files2
     networks:
       - example
     tty: true
@@ -17,8 +20,9 @@ services:
     container_name: db
     restart: always
     volumes:
-      - ./mysql:/var/lib/mysql
-
+      - type: volume 
+        source: mysqldata
+        target: /var/lib/mysql
     environment:
       - MYSQL_DATABASE=nodedb
       - MYSQL_ROOT_PASSWORD=root
@@ -29,3 +33,6 @@ services:
 networks:
   example:
     driver: bridge
+
+volumes:
+  mysqldata:

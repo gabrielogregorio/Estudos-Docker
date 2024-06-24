@@ -200,4 +200,59 @@ docker exec -it app bash
 
 docker compose ps
 docker compose up -d
+
+
+# Entrar em um container ativo com o bash
 docker exec -it app2 bash
+
+
+# Baixar imagem
+docker pull ubuntu
+
+# Apagar todos os volumes
+docker volume prune
+
+# Executar docker com o name meuubuntuname, deatchment mapeando esse volume e rodando a imagem do ubuntu
+docker run --name meuubuntuname -d -v example-volume:/app ubuntu
+
+
+
+## mount volume with bind (needs create folder)
+docker run --mount type=bind,source=$(pwd)/files,target=/home -it ubuntu bash
+
+# Inspecionar um volune
+docker volume inspect meuvolume
+
+# SHow all containers includes stopped containers 
+
+docker ps -a
+
+
+# o -rm ao finalizar irá remover o container, e não irá mais aparecer no docker ps -a
+
+docker run --rm --name seraremovidoao rodar -d -v example-volume:/app ubuntu 
+
+# Entra em uma imagem do ubuntu totalmente nova no bash. Ao sair tudo se apaga
+docker run -it ubuntu bash
+
+# Entra com um volume persistente
+
+docker run --mount type=volume,source=ubt7,target=/src -it ubuntu bash
+
+##  VOLUME DO TIPO BIND no meu local
+docker run --mount type=bind,source=$(pwd)/files,target=/src -it ubuntu bash
+
+
+# Mapeia porta 80 do pc para porta 8080 do container
+
+docker run -p 80:8080 -it ubuntu bash
+
+
+## COMNADO
+mostrar onde estão  echo $(pwd)
+
+
+
+# Ver logs de um container ativo
+
+docker logs container_name
