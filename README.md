@@ -195,3 +195,9 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
 
+dockerize --wait tcp://db:3306
+docker exec -it app bash
+
+docker compose ps
+docker compose up -d
+docker exec -it app2 bash
