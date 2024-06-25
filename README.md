@@ -256,3 +256,48 @@ mostrar onde estão  echo $(pwd)
 # Ver logs de um container ativo
 
 docker logs container_name
+
+# Listar imagens
+ docker images
+
+
+# ========
+docker login
+
+![Image docker](./docker-screen.png)
+
+
+# Listar todos os containers, retornando apenas o id 
+docker ps -a -q
+
+# Remover todos os containers a força 
+docker rm $(docker ps -a -q) -f
+
+# ENTRYPOINT
+fica segurando 
+
+# CMD
+é um comando, ele roda, não é feito para segurar e pode ser substituido  ao chamar a execução
+
+```dockerfile
+FROM ubuntu:latest
+
+ENTRYPOINT [ "echo", "hello"]
+CMD [ "world" ]
+
+# docker build -t mycontainer -f ./Dockerfile .
+# docker run --rm mycontainer     # hello world
+# docker run --rm mycontainer opa # hello opa
+
+```
+
+
+# Listar redes
+
+docker network ls
+
+# Apagar todas as redes
+docker network prune
+
+# Acessar o bash
+docker run -it ubuntu bash
