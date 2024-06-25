@@ -1,3 +1,5 @@
+DOCKERHUB: https://hub.docker.com/layers/gabrielogregorio/fullcycle/latest/images/sha256-cd34d105901d89deeb0788bcec95217e8b14f4a7e4ec8a8e847bbed1661072d9?context=repo
+
 # Build
 docker build -t gabrielogregorio/fullcycle --no-cache -f dockerfile . --progress=plain 
 
