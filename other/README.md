@@ -1,1 +1,0 @@
-docker build -t gabrielogregorio/example-image:latest .

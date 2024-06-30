@@ -1,0 +1,38 @@
+services:
+  app2:
+    build:
+      context: .
+      dockerfile: Dockerfile.yaml
+    container_name: app2
+    volumes:
+      - type: bind 
+        source: ./site
+        target: /files2
+    networks:
+      - example
+    tty: true
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: db
+    restart: always
+    volumes:
+      - type: volume 
+        source: mysqldata
+        target: /var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_ROOT_PASSWORD=root
+    
+    networks:
+      - example
+
+networks:
+  example:
+    driver: bridge
+
+volumes:
+  mysqldata:
