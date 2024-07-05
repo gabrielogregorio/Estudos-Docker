@@ -1,60 +1,38 @@
 services:
-  app:
-    container_name: app
-    restart: always
+  app2:
     build:
       context: .
       dockerfile: Dockerfile.yaml
-    tty: true
-    ports:
-      - "3333:3333"
+    container_name: app2
     volumes:
-      - ./:/app
-      - /app/node_modules
-    depends_on:
-      - database-gt
+      - type: bind 
+        source: ./site
+        target: /files2
     networks:
-      - main
+      - example
+    tty: true
+    depends_on:
+      - db
 
-  database-gt:
-    image: mysql:8.0
-    container_name: database-gt
-    command: --default-authentication-plugin=mysql_native_password
-    cap_add:
-      - SYS_NICE
-    env_file:
-      - .env
+  db:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: db
     restart: always
-    entrypoint: ["docker-entrypoint.sh"]
-    ports:
-      - "3306:3306"
     volumes:
-      - mysqldata2:/var/lib/mysql
-      - ./database/1.sql:/docker-entrypoint-initdb.d/init.sql
-
+      - type: volume 
+        source: mysqldata
+        target: /var/lib/mysql
     environment:
       - MYSQL_DATABASE=nodedb
       - MYSQL_ROOT_PASSWORD=root
+    
     networks:
-      - main
-
-  nginx:
-    container_name: nginx
-    build:
-      context: nginx
-      dockerfile: Dockerfile
-    restart: always
-    ports:
-      - "8080:8080"
-    depends_on:
-      - app
-    networks:
-      - main
+      - example
 
 networks:
-  main:
+  example:
     driver: bridge
 
 volumes:
-  mysqldata2:
-    driver: local
+  mysqldata:

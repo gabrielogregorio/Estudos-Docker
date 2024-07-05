@@ -1,0 +1,10 @@
+FROM golang:alpine as builder
+WORKDIR /
+COPY hello.go .
+RUN go build -o ./e ./hello.go
+
+FROM scratch
+WORKDIR /
+COPY --from=builder /e /
+
+CMD ["./e"]
