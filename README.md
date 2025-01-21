@@ -325,6 +325,17 @@ docker network ls
 
 docker network prune
 
+# Dicas
+
+No docker, isso vai falhar se essas pastas home/documents não existirem
+COPY ./home/documents/config.json /
+COPY ./home/documents/config.json /api
+
+é preciso especificar tudo
+COPY ./home/documents/package*.json /api/home/documents
+
+ai ele cria as subpastas
+
 # Acessar o bash
 
 docker run -it ubuntu bash
