@@ -332,11 +332,16 @@ COPY ./home/documents/config.json /
 COPY ./home/documents/config.json /api
 
 é preciso especificar tudo
-COPY ./home/documents/package*.json /api/home/documents
+COPY ./home/documents/package*.json /api/home/documents/ (TEM QUE TER O / PARA FUNCIONAR e copiar dentro de documenbts)
 
 ai ele cria as subpastas
 
 COPY --from=build /example/item/.dist /example/item/ isso vai soltar o dist dentro da pasta item
+
+
+
+
+
 
 # Acessar o bash
 
