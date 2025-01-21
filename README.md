@@ -336,6 +336,8 @@ COPY ./home/documents/package*.json /api/home/documents
 
 ai ele cria as subpastas
 
+COPY --from=build /example/item/.dist /example/item/ isso vai soltar o dist dentro da pasta item
+
 # Acessar o bash
 
 docker run -it ubuntu bash
